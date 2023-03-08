@@ -24,7 +24,7 @@ An additional layer of abstraction for creating repositories following the BLoC 
 ## Motivation
 The existing BLoC libraries are amazing for handling state managment in Flutter projects. However, the boundaries for creating `Repositores` is are way too loose. In `package:flutter_bloc`, a `Repository` can literally be any class. This package solves that problem by creating a class, `Repository`, which all the repositories can inherit from.
 
-Another problem is repository-to-repository communication. A repository should be fairly independent of other repositories and their implementations. However, sometimes a repository needs to call a method in another repository. To maintain their 
+Another problem is repository-to-repository communication. A repository should be fairly independent of other repositories and their implementations. However, sometimes a repository needs to call a method in another repository. To decouple repositories from each other, this package contains a method channel which can be used to communicate between repositories.
 
 ## Getting started
 1. Create a `RepositoryChannel`
@@ -47,6 +47,13 @@ Another problem is repository-to-repository communication. A repository should b
         MyRepository({
             required MyRepositoryChannel channel,
         }) super(channel);
+
+    /// You can override the `initialize` and `dispose` methods, like so
+    @override
+    FutureOr<void> initialize(){
+        // Do own initialization
+        super.initialize();
+    }
 
      Future<void> doSomething() async {
         channel.log('Starting to do something!');

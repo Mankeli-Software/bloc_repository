@@ -1,0 +1,19 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        enabled: true
+        generate_for:
+          - lib/**.dart
+        options:
+          build_extensions: { '.dart': '.gen.dart' }
+      json_serializable:
+        enabled: true
+        generate_for:
+          - lib/**.dart
+        options:
+          explicit_to_json: true
+          build_extensions: { '.dart': '.gen.dart' }
+          
+
+

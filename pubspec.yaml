@@ -1,0 +1,24 @@
+name: bloc_repository
+description: An Additional Layer Of Abstraction For Creating Repositories
+  Following The B Lo C Pattern Architecture
+version: 1.0.0
+homepage: https://mankeli.co
+repository: https://github.com/Mankeli-Software/bloc_repository
+issue_tracker: https://github.com/Mankeli-Software/bloc_repository/issues
+
+# Uncomment these to add screenshots visible on pub.dev
+# screenshots:
+#   - description: 'Screenshot 1'
+#     path: doc/asset/screenshot1.png
+#   - description: 'Screenshot 2'
+#     path: doc/asset/screenshot2.png
+#
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies:
+  meta: ^1.8.0
+
+dev_dependencies:
+  dart_code_metrics: any
+  mankeli_analysis: ^1.1.0

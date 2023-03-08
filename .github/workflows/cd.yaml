@@ -1,0 +1,23 @@
+name: '[CD]' 
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@main # required!
+        
+      - name: 'bloc_repository'
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.PUB_CREDENTIAL }}
+          skipTests: true
+          format: false
+          dryRunOnly: false
+          flutter: true
+          force: true

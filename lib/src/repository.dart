@@ -28,15 +28,23 @@ abstract class Repository<T extends RepositoryChannel> {
         )
       : _channel!;
 
+  /// Whether `initialize` is called or not
+  bool initialized = false;
+
+  /// Whether `dispose` is called or not
+  bool disposed = false;
+
   /// Called to initialize the repository
   @mustCallSuper
-  FutureOr<void> initialize() async {
+  Future<void> initialize() async {
+    initialized = true;
     _channel?.initialized?.call();
   }
 
   /// Called to dispose the repository and free up the resources
   @mustCallSuper
-  FutureOr<void> dispose() async {
+  Future<void> dispose() async {
+    disposed = true;
     _channel?.disposed?.call();
   }
 }
